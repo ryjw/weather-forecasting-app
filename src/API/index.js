@@ -1,2 +1,2 @@
 export const API = "http://api.openweathermap.org";
-export const APIKey = "f70463e0d75764d77b3fdf1321573a1f";
+export const APIKey = "879333e5019cae64ddb5b2f74f3ce195";

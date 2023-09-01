@@ -4,13 +4,14 @@ import WeatherPage from "./components/WeatherPage";
 
 function App() {
   const [weather, setWeather] = useState(undefined);
+  const [cityName, setCityName] = useState("");
 
   return (
     <>
       {!weather ? (
-        <LandingPage setWeather={setWeather} />
+        <LandingPage setWeather={setWeather} setCityName={setCityName} />
       ) : (
-        <WeatherPage weather={weather} setWeather={setWeather} />
+        <WeatherPage weather={weather} />
       )}
     </>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { API, APIKey } from "../API";
 
-export default function Picker({ setWeather }) {
+export default function Picker({ setWeather, setCityName }) {
   const [cityReturn, setCityReturn] = useState([]);
   const [citySearchName, setCitySearchName] = useState("");
 
@@ -19,10 +19,13 @@ export default function Picker({ setWeather }) {
     const lat = cityReturn[index].lat;
     const lon = cityReturn[index].lon;
     const res = await fetch(
-      `${API}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}`
+      `${API}/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&appid=${APIKey}`
     );
     const info = await res.json();
     setWeather(info);
+    setCityName(
+      `${cityReturn[index].name}, ${cityReturn[index].state}, ${cityReturn[index].country}`
+    );
   }
 
   return (
