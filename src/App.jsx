@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       {!weather ? (
-        <LandingPage weather={weather} setWeather={setWeather} />
+        <LandingPage setWeather={setWeather} />
       ) : (
         <WeatherPage weather={weather} setWeather={setWeather} />
       )}
