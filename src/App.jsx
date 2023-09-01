@@ -3,7 +3,7 @@ import LandingPage from "./components/LandingPage";
 import WeatherPage from "./components/WeatherPage";
 
 function App() {
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState(undefined);
 
   return (
     <>
