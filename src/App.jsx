@@ -1,7 +1,19 @@
 import { useState } from "react";
+import LandingPage from "./components/LandingPage";
+import WeatherPage from "./components/WeatherPage";
 
-import "./App.css";
+function App() {
+  const [weather, setWeather] = useState(null);
 
-function App() {}
+  return (
+    <>
+      {!weather ? (
+        <LandingPage weather={weather} setWeather={setWeather} />
+      ) : (
+        <WeatherPage weather={weather} setWeather={setWeather} />
+      )}
+    </>
+  );
+}
 
 export default App;
