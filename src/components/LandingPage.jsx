@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Picker from "./Picker";
 
 export default function LandingPage({ setWeather, setCityName }) {
-  const [season, setSeason] = useState("spring");
+  const [season, setSeason] = useState("");
 
   useEffect(() => {
     let seas;

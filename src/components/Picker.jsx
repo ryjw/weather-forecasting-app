@@ -19,7 +19,7 @@ export default function Picker({ setWeather, setCityName }) {
     const lat = cityReturn[index].lat;
     const lon = cityReturn[index].lon;
     const res = await fetch(
-      `${API}/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&appid=${APIKey}`
+      `${API}/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`
     );
     const info = await res.json();
     setWeather(info);
