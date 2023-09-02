@@ -27,7 +27,7 @@ export default function LandingPage({ setWeather, setCityName }) {
   return (
     <div className={`landing-container ${season}`}>
       <h1>Weather Forecast</h1>
-      <h2>Please enter your city</h2>
+      <h2>Please enter a location</h2>
       <Picker setWeather={setWeather} setCityName={setCityName} />
     </div>
   );
