@@ -20,6 +20,9 @@ export default function WeatherPage({
   }, [currentWeather]);
   console.log(hourlyForecast);
   console.log(currentWeather);
+  // sets the class of the weather container to show a background image appropriate to the weather
+  useEffect(() => {}, [currentWeather]);
+
   return (
     <div className="weather-container">
       <h1>{cityName}</h1>
@@ -37,21 +40,25 @@ export default function WeatherPage({
           hourlyForecast={hourlyForecast.list[0]}
           timezone={currentWeather.timezone}
           tempUnits={tempUnits}
+          dayNight={currentWeather.sys}
         />
         <ThreeHourForecast
           hourlyForecast={hourlyForecast.list[1]}
           timezone={currentWeather.timezone}
           tempUnits={tempUnits}
+          dayNight={currentWeather.sys}
         />
         <ThreeHourForecast
           hourlyForecast={hourlyForecast.list[2]}
           timezone={currentWeather.timezone}
           tempUnits={tempUnits}
+          dayNight={currentWeather.sys}
         />
         <ThreeHourForecast
           hourlyForecast={hourlyForecast.list[3]}
           timezone={currentWeather.timezone}
           tempUnits={tempUnits}
+          dayNight={currentWeather.sys}
         />
       </div>
     </div>
