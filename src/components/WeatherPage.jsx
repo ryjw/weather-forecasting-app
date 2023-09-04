@@ -17,13 +17,13 @@ export default function WeatherPage({
     const amended = weather.charAt(0).toUpperCase() + weather.slice(1);
     setDescriptionCapitalised(amended);
   }, [currentWeather]);
-  console.log(currentWeather);
   return (
     <div className="weather-container">
       <h1>{cityName}</h1>
       <h2>{descriptionCapitalised}</h2>
       <h2>
-        <DisplayTemp />
+        <DisplayTemp tempUnits={tempUnits} currentWeather={currentWeather} />°
+        {tempUnits}
       </h2>
     </div>
   );
