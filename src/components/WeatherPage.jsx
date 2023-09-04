@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import DisplayTemp from "./DisplayTemp";
+import ThreeHourForecast from "./ThreeHourForecast";
 
 export default function WeatherPage({
   hourlyForecast,
@@ -17,14 +18,42 @@ export default function WeatherPage({
     const amended = weather.charAt(0).toUpperCase() + weather.slice(1);
     setDescriptionCapitalised(amended);
   }, [currentWeather]);
+  console.log(hourlyForecast);
+  console.log(currentWeather);
   return (
     <div className="weather-container">
       <h1>{cityName}</h1>
       <h2>{descriptionCapitalised}</h2>
       <h2>
-        <DisplayTemp tempUnits={tempUnits} currentWeather={currentWeather} />°
-        {tempUnits}
+        <DisplayTemp
+          tempUnits={tempUnits}
+          temperature={currentWeather.main.temp}
+        />
+        °{tempUnits}
       </h2>
+      <h4>Three hour forecast</h4>
+      <div className="forecast-container">
+        <ThreeHourForecast
+          hourlyForecast={hourlyForecast.list[0]}
+          timezone={currentWeather.timezone}
+          tempUnits={tempUnits}
+        />
+        <ThreeHourForecast
+          hourlyForecast={hourlyForecast.list[1]}
+          timezone={currentWeather.timezone}
+          tempUnits={tempUnits}
+        />
+        <ThreeHourForecast
+          hourlyForecast={hourlyForecast.list[2]}
+          timezone={currentWeather.timezone}
+          tempUnits={tempUnits}
+        />
+        <ThreeHourForecast
+          hourlyForecast={hourlyForecast.list[3]}
+          timezone={currentWeather.timezone}
+          tempUnits={tempUnits}
+        />
+      </div>
     </div>
   );
 }
