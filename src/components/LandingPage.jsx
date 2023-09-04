@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import Picker from "./Picker";
 
-export default function LandingPage({ setWeather, setCityName }) {
+export default function LandingPage({
+  setCurrentWeather,
+  setCityName,
+  setHourlyForecast,
+}) {
   const [season, setSeason] = useState("");
 
   useEffect(() => {
@@ -28,7 +32,11 @@ export default function LandingPage({ setWeather, setCityName }) {
     <div className={`landing-container ${season}`}>
       <h1>Weather Forecast</h1>
       <h2>Please enter a location</h2>
-      <Picker setWeather={setWeather} setCityName={setCityName} />
+      <Picker
+        setHourlyForecast={setHourlyForecast}
+        setCurrentWeather={setCurrentWeather}
+        setCityName={setCityName}
+      />
     </div>
   );
 }

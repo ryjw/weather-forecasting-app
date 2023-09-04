@@ -3,15 +3,27 @@ import LandingPage from "./components/LandingPage";
 import WeatherPage from "./components/WeatherPage";
 
 function App() {
-  const [weather, setWeather] = useState(undefined);
+  const [currentWeather, setCurrentWeather] = useState(undefined);
+  const [hourlyForecast, setHourlyForecast] = useState({});
   const [cityName, setCityName] = useState("");
 
   return (
     <>
-      {!weather ? (
-        <LandingPage setWeather={setWeather} setCityName={setCityName} />
+      {!currentWeather ? (
+        <LandingPage
+          setCurrentWeather={setCurrentWeather}
+          setHourlyForecast={setHourlyForecast}
+          setCityName={setCityName}
+        />
       ) : (
-        <WeatherPage weather={weather} />
+        <WeatherPage
+          currentWeather={currentWeather}
+          setCurrentWeather={setCurrentWeather}
+          hourlyForecast={hourlyForecast}
+          setHourlyForecast={setHourlyForecast}
+          cityName={cityName}
+          setCityName={setCityName}
+        />
       )}
     </>
   );

@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { API, APIKey } from "../API";
 
-export default function Picker({ setWeather, setCityName }) {
+export default function Picker({
+  setCurrentWeather,
+  setCityName,
+  setHourlyForecast,
+}) {
   const [cityReturn, setCityReturn] = useState([]);
   const [citySearchName, setCitySearchName] = useState("");
 
@@ -22,10 +26,22 @@ export default function Picker({ setWeather, setCityName }) {
       `${API}/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`
     );
     const info = await res.json();
-    setWeather(info);
-    setCityName(
-      `${cityReturn[index].name}, ${cityReturn[index].state}, ${cityReturn[index].country}`
+    setHourlyForecast(info);
+    const resTwo = await fetch(
+      `${API}/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}`
     );
+    const infoTwo = await resTwo.json();
+    setCurrentWeather(infoTwo);
+
+    // sets city name for display
+    // if statement to account for cases where a state is returned or not returned
+    if (cityReturn[index].state) {
+      setCityName(
+        `${cityReturn[index].name}, ${cityReturn[index].state}, ${cityReturn[index].country}`
+      );
+    } else {
+      setCityName(`${cityReturn[index].name}, ${cityReturn[index].country}`);
+    }
   }
 
   return (
@@ -42,7 +58,9 @@ export default function Picker({ setWeather, setCityName }) {
           {cityReturn.map((city, index) => {
             return (
               <option value={index} key={index}>
-                {city.name}, {city.state}, {city.country}
+                {city.state
+                  ? `${city.name}, ${city.state}, ${city.country}`
+                  : `${city.name}, ${city.country}`}
               </option>
             );
           })}
