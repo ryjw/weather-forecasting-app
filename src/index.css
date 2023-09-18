@@ -4,11 +4,11 @@ body {
   min-height: 98vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .landing-container {
-  margin-top: 150px;
   height: 500px;
   width: 450px;
   border: 2px solid white;
@@ -20,8 +20,7 @@ body {
 }
 
 .weather-container {
-  margin-top: 150px;
-  height: 500px;
+  min-height: 500px;
   min-width: 400px;
   border: 2px solid rgb(255, 255, 255);
   border-radius: 10px;

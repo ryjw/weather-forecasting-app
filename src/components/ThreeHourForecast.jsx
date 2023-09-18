@@ -80,7 +80,7 @@ export default function ThreeHourForecast({
         hourlyForecast.weather[0].id === 804:
         setIconCode("04");
     }
-  }, [dayNight]);
+  }, [hourlyForecast]);
 
   return (
     <div className="three-hour-forecast">
